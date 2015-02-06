@@ -1,5 +1,6 @@
 //problem 1 
 //
+//find sum of multi of 3 or 5 less than 1k
 #include <iostream>
 
 using namespace std;

@@ -1,5 +1,6 @@
 //problem 2 
 //
+//find sum of even fib nums less than 4 million 
 #include<iostream>
 
 using namespace std;
