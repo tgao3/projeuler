@@ -2,11 +2,12 @@
 //
 //find 10001st prime number
 #include<iostream>
+#include<math.h>
 
 using namespace std;
 
 bool prime(int x) {
-	for(int i = 2; i < x; i++) 
+	for(int i = sqrt(x); i > 1; i--) 
 		if(!(x%i)) return false;
 	return true;
 }
