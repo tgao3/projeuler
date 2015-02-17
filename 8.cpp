@@ -25,16 +25,24 @@ int ** string_to_int(vector<string> name) {
 	int ** result;
 	int row = 0, col = 0;
 
+	cout << "test" << endl;
 	for(string s : name) {
+		cout << "testiongtesaitng" << endl;
 		for(char c : s) {
+			cout << "gkjhdasfgd" << endl;
 			if(isdigit(c)) {
-				result[row][col] = atoi(c);
+				cout << isdigit(c) << endl;
+				int test = atoi(&c);
+				cout << "plplpl::" << test << endl;
+				result[row][col] = atoi(&c);
+				cout << result[row][col] << endl;
 			}
 			col++;
 		}	
 		row++;
 		col = 0;
 	}
+	cout << "return" << endl;
 	return result;
 }
 
@@ -50,10 +58,12 @@ int main() {
 		
 	int ** array;
 	array = string_to_int(numbers);
-	
+	cout << "here" << endl;
 	//testing testing
 	for(int i = 0; i < 20; i++) {
+		cout << i << endl;
 		for(int j = 0; j < 50; j++) {
+			cout << "j:::" << j << endl;
 			cout << array[i][j];
 		}
 		cout << endl;
