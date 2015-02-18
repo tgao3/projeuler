@@ -21,7 +21,7 @@ string read_digits(string name) {
 	return line;
 }
 
-//convert the vector of strings to 2d-array of ints
+//convert the vector of strings to array of ints
 int * string_to_int(string name) {
 	int * result = new int[1000];
 	int i = 0, temp = 0;
