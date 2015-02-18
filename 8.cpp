@@ -22,51 +22,74 @@ vector<string> read_digits(string name) {
 
 //convert the vector of strings to 2d-array of ints
 int ** string_to_int(vector<string> name) {
-	int ** result;
+	int ** result = new int*[20];
 	int row = 0, col = 0;
 
-	cout << "test" << endl;
 	for(string s : name) {
-		cout << "testiongtesaitng" << endl;
+		result[row] = new int[50];
 		for(char c : s) {
-			cout << "gkjhdasfgd" << endl;
-			if(isdigit(c)) {
-				cout << isdigit(c) << endl;
-				int test = atoi(&c);
-				cout << "plplpl::" << test << endl;
-				result[row][col] = atoi(&c);
-				cout << result[row][col] << endl;
-			}
+			if(isdigit(c)) result[row][col] = atoi(&c);
 			col++;
 		}	
 		row++;
 		col = 0;
 	}
-	cout << "return" << endl;
 	return result;
 }
+
+//finding the product
+//only need to check 3 directions: right, down-right, and down
+//checking up, up-left, and left would be repetitive 
+//
+//direction parameter: 0 for right, 1 for down-right, 2 for down
+int calculate(int ** array, int row, int col, int direction) {
+	int count = 0, product = 1;
+	
+	while((row < 20) && (col < 50)) {
+		if(!direction) {
+			//check right
+			cout << row << col << endl;
+			product *= array[row][col];
+			col++;
+		}
+		else if(direction == 1) {
+			//down-right
+			product *= array[row][col];
+			row++;
+			col++;
+		}
+		else if(direction == 2) {
+			//down
+			product *= array[row][col];
+			row++;
+		}
+		count++;
+		if(count == 13) return product;
+	}
+	return 0;
+}
+
+
 
 int main() {
 	vector<string> numbers;
 	
 	numbers = read_digits("p8.txt");
-	//testing testing
-	for(string &temp : numbers) {
-		cout << temp << endl;
-	}
-	cout << "\n\n" << endl;
-		
 	int ** array;
+	int highest = 0;
+	int result_r = 0, result_dr = 0, result_d = 0;
+	
 	array = string_to_int(numbers);
-	cout << "here" << endl;
-	//testing testing
 	for(int i = 0; i < 20; i++) {
-		cout << i << endl;
 		for(int j = 0; j < 50; j++) {
-			cout << "j:::" << j << endl;
-			cout << array[i][j];
+			result_r = calculate(array, i, j, 0);
+		//	result_dr = calculate(array, i, j, 1);
+		//	result_d = calculate(array, i, j, 2);
+			if(result_r > highest) highest = result_r;
+		//	if(result_dr > highest) highest = result_dr;
+		//	if(result_d > highest) highest = result_d;		
 		}
-		cout << endl;
 	}
+//	cout << highest << endl;
 	return 0;
 }
