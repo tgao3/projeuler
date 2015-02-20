@@ -29,7 +29,7 @@ int ** string_to_int(vector<string> name) {
 	
 	for(string s : name) {
 		content.str(s);
-		while(getline(content, token, " ")) {
+		while(getline(content, token, '\0')) {
 			cout << token << endl;
 		}
 	}
