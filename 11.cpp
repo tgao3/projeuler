@@ -2,7 +2,7 @@
 //
 //greatest product of 4 adjacent numbers within p11.txt
 #include<iostream>
-#include<fstream>
+#include<ifstream>
 #include<iterator>
 #include<vector>
 #include<string>
