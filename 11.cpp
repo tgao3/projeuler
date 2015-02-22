@@ -2,11 +2,10 @@
 //
 //greatest product of 4 adjacent numbers within p11.txt
 #include<iostream>
-#include<ifstream>
+#include<fstream>
 #include<iterator>
 #include<vector>
 #include<string>
-#include<cctype>
 #include<stdlib.h>
 #include<sstream>
 
@@ -24,14 +23,23 @@ vector<string> read_digits(string name) {
 //convert the vector of strings to 2d-array of ints
 //need to parse the strings correctly with tokens
 int ** string_to_int(vector<string> name) {
-	char * token;
-	istringstream content;
-	
+	istringstream isstream;
+	vector<vector<string>> number(20, vector<string>(20));
+	string temp;
+	int iter = 0;
+
 	for(string s : name) {
-		content.str(s);
-		while(getline(content, token, '\0')) {
-			cout << token << endl;
+		isstream.str(s);
+		cout << s << ' ';
+		while(getline(isstream, temp, ' ')){
+		//	cout << isstream.str() << endl;
+		//	cout << "here" << endl;
+		//	cout << temp << endl;
+		//	number[iter].push_back(temp);
+		//	cout << "iterere" << endl;
+		//	temp.clear();
 		}
+		iter++;
 	}
 
 }
