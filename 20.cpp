@@ -11,15 +11,20 @@ using namespace std;
 //multiplication is equal to the 1st number 
 //adding to itself by the 2nd number times
 //i.e. 100 * 99 = (100 + 100 + ... 98 more times)
-vector<int> addition(vector<int> v, int x) {
+void addition(vector<int> &v, int x) {
 	int carry_over = 0;
-	
-	for(int j = 0; j < x; j++) {
+	vector<int> t(v);
+	vector<int>::iterator k;
+
+	for(int j = 0; j < x - 1; j++) {
+		k = t.begin();
 		for(vector<int>::iterator i = v.begin();
 			i != v.end(); i++) {	
 			
 			*i+=carry_over;
-			*i+=*i;
+			if(k != t.end()) {
+				*i+=*k;
+			} 
 
 			if(*i > 9) {
 				*i = (*i)%10;
@@ -27,25 +32,27 @@ vector<int> addition(vector<int> v, int x) {
 			} else {
 				carry_over = 0;
 			}
+
+			if(k != t.end()) k++;
 			
 		}	
 		if(carry_over) v.push_back(carry_over);
 		carry_over = 0;
 	}	
-	return v;
 }
 
 int main() {
-	vector<int> number(1, 1);
+	vector<int> number;
 	uint64_t result = 0;
 	
-	for(int i = 0; i < 101; i++) {
-		number = addition(number, i);
+	number.push_back(1);
+	for(int i = 2; i < 101; i++) {
+		addition(number, i);
 	}	
 	
 	for(vector<int>::iterator i = number.begin();
 		i != number.end(); i++) {
-		//cout << *i << endl;
+		cout << *i << endl;
 		result += *i;
 	}
 	cout << result << endl;
